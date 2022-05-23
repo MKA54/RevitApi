@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Assembly>"C:\TestRevitApps\Revit\AirDuctsCountPerFloor.dll"</Assembly>
+		<AddInId>0441A227-C291-443F-AB54-0CCF05EA70A4</AddInId>
+		<FullClassName>AirDuctsCountPerFloor.Main</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<Text>Количество воздуховодов по этажа</Text>
+	</AddIn>
+</RevitAddIns>

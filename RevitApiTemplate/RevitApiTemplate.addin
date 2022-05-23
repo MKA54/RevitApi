@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Assembly>"C:\TestRevitApps\Revit\RevitApiTemplate.dll"</Assembly>
+		<AddInId>CDF2128A-55C5-4726-92C0-0E0E292F0D73</AddInId>
+		<FullClassName>RevitApiTemplate.Main</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<Text>Шаблон</Text>
+	</AddIn>
+</RevitAddIns>

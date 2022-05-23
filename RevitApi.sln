@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitApiTemplate", "RevitApiTemplate\RevitApiTemplate.csproj", "{9B4B9F5B-6F22-4751-94CF-A58F11699B58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirDuctsCount", "AirDuctsCount\AirDuctsCount.csproj", "{1C82D329-DD44-4823-8181-EE97B5CF8402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirDuctsCountPerFloor", "AirDuctsCountPerFloor\AirDuctsCountPerFloor.csproj", "{D59574F0-E014-477C-BC4D-BBB277FDBBC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColumnsCount", "ColumnsCount\ColumnsCount.csproj", "{CE349B18-A29F-46BC-92A0-3D858CFA8715}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipesCount", "PipesCount\PipesCount.csproj", "{9DCF51B5-2EB2-4D26-B86E-10F36FF8157E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotalLengthPipes", "TotalLengthPipes\TotalLengthPipes.csproj", "{FA9759AB-9587-4533-A8A8-4888A47E5105}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B4B9F5B-6F22-4751-94CF-A58F11699B58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B4B9F5B-6F22-4751-94CF-A58F11699B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B4B9F5B-6F22-4751-94CF-A58F11699B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B4B9F5B-6F22-4751-94CF-A58F11699B58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C82D329-DD44-4823-8181-EE97B5CF8402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C82D329-DD44-4823-8181-EE97B5CF8402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C82D329-DD44-4823-8181-EE97B5CF8402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C82D329-DD44-4823-8181-EE97B5CF8402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D59574F0-E014-477C-BC4D-BBB277FDBBC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D59574F0-E014-477C-BC4D-BBB277FDBBC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D59574F0-E014-477C-BC4D-BBB277FDBBC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D59574F0-E014-477C-BC4D-BBB277FDBBC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE349B18-A29F-46BC-92A0-3D858CFA8715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE349B18-A29F-46BC-92A0-3D858CFA8715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE349B18-A29F-46BC-92A0-3D858CFA8715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE349B18-A29F-46BC-92A0-3D858CFA8715}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DCF51B5-2EB2-4D26-B86E-10F36FF8157E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DCF51B5-2EB2-4D26-B86E-10F36FF8157E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DCF51B5-2EB2-4D26-B86E-10F36FF8157E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DCF51B5-2EB2-4D26-B86E-10F36FF8157E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA9759AB-9587-4533-A8A8-4888A47E5105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA9759AB-9587-4533-A8A8-4888A47E5105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA9759AB-9587-4533-A8A8-4888A47E5105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA9759AB-9587-4533-A8A8-4888A47E5105}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B27E1B5-4C60-49DB-846E-680827AF23D8}
+	EndGlobalSection
+EndGlobal
