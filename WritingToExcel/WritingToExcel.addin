@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Assembly>"C:\TestRevitApps\Revit\WritingToExcel.dll"</Assembly>
+		<AddInId>ACF16952-F012-4F12-8EC4-2F0317134650</AddInId>
+		<FullClassName>WritingToExcel.Main</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<Text>Запись в Excel</Text>
+	</AddIn>
+</RevitAddIns>

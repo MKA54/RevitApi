@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Assembly>"C:\TestRevitApps\Revit\ParameterEntry.dll"</Assembly>
+		<AddInId>10D87774-A368-4471-94BE-A89CDEA18824</AddInId>
+		<FullClassName>ParameterEntry.Main</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<Text>Запись параметра</Text>
+	</AddIn>
+</RevitAddIns>

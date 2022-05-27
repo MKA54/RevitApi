@@ -1,0 +1,17 @@
+﻿<Window x:Class="CreatingButtons.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CreatingButtons"
+             mc:Ignorable="d" 
+             Height="350" Width="400">
+    <StackPanel>
+        <Label Content="Узнать количество труб" Margin="5" />
+        <Button Content="Выбрать" Command="{Binding PipesCount}" Margin="5" />
+        <Label Content="Узнать объёмом всех стен" Margin="5" />
+        <Button Content="Выбрать" Command="{Binding WallVolume}" Margin="5" />
+        <Label Content="Узнать количество дверей" Margin="5" />
+        <Button Content="Выбрать" Command="{Binding DoorsCount}" Margin="5" />
+    </StackPanel>
+</Window>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Assembly>"C:\TestRevitApps\Revit\ChangingTypesWall.dll"</Assembly>
+		<AddInId>E5854838-694F-45D2-B1B0-77C3DA6DDBA3</AddInId>
+		<FullClassName>ChangingTypesWall.Main</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<Text>Изменение типов стен</Text>
+	</AddIn>
+</RevitAddIns>

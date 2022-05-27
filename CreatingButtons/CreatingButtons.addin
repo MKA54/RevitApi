@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Assembly>"C:\TestRevitApps\Revit\CreatingButtons.dll"</Assembly>
+		<AddInId>AA62173E-9117-4988-97AD-83E36268804A</AddInId>
+		<FullClassName>CreatingButtons.Main</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<Text>Кнопки</Text>
+	</AddIn>
+</RevitAddIns>
