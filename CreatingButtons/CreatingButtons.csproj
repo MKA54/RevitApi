@@ -78,6 +78,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TrainingLibrary\TrainingLibrary.csproj">
+      <Project>{ac3f6080-884d-4792-a9c2-ab82f3dc18e2}</Project>
+      <Name>TrainingLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>

@@ -8,6 +8,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Plumbing;
 using Autodesk.Revit.UI;
 using Prism.Commands;
+using TrainingLibrary;
 
 namespace CreatingButtons
 {
@@ -16,82 +17,63 @@ namespace CreatingButtons
         public MainViewViewModel(ExternalCommandData commandData)
         {
             _commandData = commandData;
-            PipesCount = new DelegateCommand(CalculatePipesCount);
-            WallVolume = new DelegateCommand(CalculateWallVolume);
-            DoorsCount = new DelegateCommand(CalculateDoorsCount);
+            PipesCount = new DelegateCommand(GetPipesCount);
+            WallVolume = new DelegateCommand(GetWallVolume);
+            DoorsCount = new DelegateCommand(GetDoorsCount);
+
+            var uiApp = _commandData.Application;
+            var uiDoc = uiApp.ActiveUIDocument;
+            var doc = uiDoc.Document;
         }
 
-        private ExternalCommandData _commandData;
-
+        private readonly ExternalCommandData _commandData;
+        
         public DelegateCommand PipesCount { get; private set; }
         public DelegateCommand WallVolume { get; private set; }
         public DelegateCommand DoorsCount { get; private set; }
 
-        public event EventHandler CloseRequest;
+        public event EventHandler HideRequest;
+        public event EventHandler ShowRequest;
 
-        private void RaiseCloseRequest()
+        private void RaiseHideRequest()
         {
-            CloseRequest?.Invoke(this, EventArgs.Empty);
+            HideRequest?.Invoke(this, EventArgs.Empty);
         }
 
-        private void CalculatePipesCount()
+        private void RaiseShowRequest()
         {
-            RaiseCloseRequest();
-
-            var uiApp = _commandData.Application;
-            var uiDoc = uiApp.ActiveUIDocument;
-            var doc = uiDoc.Document;
-
-            var pipesCount = new FilteredElementCollector(doc)
-                .OfClass(typeof(Pipe))
-                .ToElements()
-                .OfType<Pipe>()
-                .ToList();
-
-            TaskDialog.Show("Pipes count", pipesCount.Count.ToString());
-        }
-        private void CalculateDoorsCount()
-        {
-            var uiApp = _commandData.Application;
-            var uiDoc = uiApp.ActiveUIDocument;
-            var doc = uiDoc.Document;
-
-            var doorsCount = new FilteredElementCollector(doc)
-                .OfCategory(BuiltInCategory.OST_Doors)
-                .WhereElementIsNotElementType()
-                .Cast<FamilyInstance>()
-                .ToList();
-
-            TaskDialog.Show("Doors count", doorsCount.Count.ToString());
+            ShowRequest?.Invoke(this, EventArgs.Empty);
         }
 
-        private void CalculateWallVolume()
+        private void GetPipesCount()
         {
-            var uiApp = _commandData.Application;
-            var uiDoc = uiApp.ActiveUIDocument;
-            var doc = uiDoc.Document;
+            RaiseHideRequest();
 
-            var walls = new FilteredElementCollector(doc)
-                .OfCategory(BuiltInCategory.OST_Walls)
-                .WhereElementIsNotElementType()
-                .Cast<Wall>()
-                .ToList();
+            var pipesCount = SelectionUtils.CalculatePipesCount(_commandData);
+            TaskDialog.Show("Pipes count", pipesCount.ToString());
 
-            var volumeOfSelectedWalls = 0.0;
+            RaiseShowRequest();
+        }
 
-            foreach (var wall in walls)
-            {
-                var volumeParameter = wall.get_Parameter(BuiltInParameter.HOST_VOLUME_COMPUTED);
+        private void GetDoorsCount()
+        {
+            RaiseHideRequest();
 
-                if (volumeParameter.StorageType == StorageType.Double)
-                {
-                    volumeOfSelectedWalls += volumeParameter.AsDouble();
-                }
-            }
+            var doorsCount = SelectionUtils.CalculateDoorsCount(_commandData);
+            TaskDialog.Show("Doors count", doorsCount.ToString());
 
-            var result = UnitUtils.ConvertFromInternalUnits(volumeOfSelectedWalls, UnitTypeId.CubicMeters);
+            RaiseShowRequest();
+        }
 
+        private void GetWallVolume()
+        {
+            RaiseHideRequest();
+
+            var result = UnitUtils.ConvertFromInternalUnits(SelectionUtils.CalculateWallVolume(_commandData),
+                UnitTypeId.CubicMeters);
             TaskDialog.Show("Wall volume", result.ToString(CultureInfo.InvariantCulture));
+
+            RaiseShowRequest();
         }
     }
 }
