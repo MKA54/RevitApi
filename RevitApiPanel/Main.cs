@@ -25,12 +25,12 @@ namespace RevitApiPanel
             const string utilsFolderPath = @"C:\TestRevitApps\Revit\";
 
             var panel = application.CreateRibbonPanel(tabName, "Панель кнопок");
-            var button1 = new PushButtonData("Система",
+            var button1 = new PushButtonData("Кнопки",
                 "Смена типа стен",
                 Path.Combine(utilsFolderPath, "ChangingTypesWall.dll"),
                 "ChangingTypesWall.Main");
 
-            var button2 = new PushButtonData("Система",
+            var button2 = new PushButtonData("Стены",
                             "Кнопки",
                             Path.Combine(utilsFolderPath, "CreatingButtons.dll"),
                             "CreatingButtons.Main");
