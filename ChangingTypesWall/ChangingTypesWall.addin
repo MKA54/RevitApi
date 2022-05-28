@@ -5,6 +5,6 @@
 		<AddInId>E5854838-694F-45D2-B1B0-77C3DA6DDBA3</AddInId>
 		<FullClassName>ChangingTypesWall.Main</FullClassName>
 		<VendorId>ADSK</VendorId>
-		<Text>Изменение типов стен</Text>
+		<Text>Смена типа стен</Text>
 	</AddIn>
 </RevitAddIns>

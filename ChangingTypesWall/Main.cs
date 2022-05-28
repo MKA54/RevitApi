@@ -3,6 +3,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,8 @@ namespace ChangingTypesWall
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            var uiApplication = commandData.Application;
-            var uiDoc = uiApplication.ActiveUIDocument;
-            var doc = uiDoc.Document;
+            var window = new View(commandData);
+            window.ShowDialog();
 
             return Result.Succeeded;
         }

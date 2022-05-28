@@ -12,17 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Autodesk.Revit.UI;
 
 namespace ChangingTypesWall
 {
     /// <summary>
-    /// Логика взаимодействия для UserControl1.xaml
+    /// Логика взаимодействия для View.xaml
     /// </summary>
-    public partial class UserControl1 : Window
+    public partial class View : Window
     {
-        public UserControl1()
+        public View(ExternalCommandData commandData)
         {
             InitializeComponent();
+            var vm = new MainViewViewModel(commandData);
+            vm.CloseRequest += (s, e) => this.Close();
+            DataContext = vm;
         }
     }
 }

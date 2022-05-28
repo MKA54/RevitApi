@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>APIChangingTypesWallPanel</Name>
+		<Assembly>"C:\TestRevitApps\Revit\ChangingTypesWallPanel.dll"</Assembly>
+		<AddInId>46E8069C-B474-480A-8C0E-F46372EC2E71</AddInId>
+		<FullClassName>ChangingTypesWallPanel.Main</FullClassName>
+		<VendorId>ADSK</VendorId>
+	</AddIn>
+</RevitAddIns>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>APIPanel</Name>
+		<Assembly>"C:\TestRevitApps\Revit\RevitApiPanel.dll"</Assembly>
+		<AddInId>7284D3C4-5D85-4D3A-A828-6546B04C3FD7</AddInId>
+		<FullClassName>RevitApiPanel.Main</FullClassName>
+		<VendorId>ADSK</VendorId>
+	</AddIn>
+</RevitAddIns>

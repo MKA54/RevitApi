@@ -20,17 +20,13 @@ namespace CreatingButtons
             PipesCount = new DelegateCommand(GetPipesCount);
             WallVolume = new DelegateCommand(GetWallVolume);
             DoorsCount = new DelegateCommand(GetDoorsCount);
-
-            var uiApp = _commandData.Application;
-            var uiDoc = uiApp.ActiveUIDocument;
-            var doc = uiDoc.Document;
         }
 
         private readonly ExternalCommandData _commandData;
         
-        public DelegateCommand PipesCount { get; private set; }
-        public DelegateCommand WallVolume { get; private set; }
-        public DelegateCommand DoorsCount { get; private set; }
+        public DelegateCommand PipesCount { get; }
+        public DelegateCommand WallVolume { get; }
+        public DelegateCommand DoorsCount { get; }
 
         public event EventHandler HideRequest;
         public event EventHandler ShowRequest;

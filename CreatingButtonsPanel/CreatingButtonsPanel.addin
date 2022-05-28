@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Application">
+		<Name>APICreatingButtonsPanel</Name>
+		<Assembly>"C:\TestRevitApps\Revit\CreatingButtonsPanel.dll"</Assembly>
+		<AddInId>08787EC1-EF24-4D72-98CA-0604CEE18DCD</AddInId>
+		<FullClassName>CreatingButtonsPanel.Main</FullClassName>
+		<VendorId>ADSK</VendorId>
+	</AddIn>
+</RevitAddIns>

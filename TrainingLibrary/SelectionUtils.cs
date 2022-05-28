@@ -6,11 +6,43 @@ using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Plumbing;
 using Autodesk.Revit.UI;
+using Autodesk.Revit.UI.Selection;
 
 namespace TrainingLibrary
 {
-    public class SelectionUtils 
+    public class SelectionUtils
     {
+        public static List<Element> PickObjects(ExternalCommandData commandData, string message = "Выберите элементы")
+        {
+            var uiApp = commandData.Application;
+            var uiDoc = uiApp.ActiveUIDocument;
+            var doc = uiDoc.Document;
+
+            var elementList = new List<Element>();
+
+            try
+            {
+                var selectedObjects = uiDoc.Selection.PickObjects(ObjectType.Element, message);
+                elementList = selectedObjects.Select(selectedObject => doc.GetElement(selectedObject)).ToList();
+            }
+            catch(Autodesk.Revit.Exceptions.OperationCanceledException)
+            { }
+
+            return elementList;
+        }
+
+        public static List<WallType> GetTypesWalls(ExternalCommandData commandData)
+        {
+            var uiApp = commandData.Application;
+            var uiDoc = uiApp.ActiveUIDocument;
+            var doc = uiDoc.Document;
+
+            return new FilteredElementCollector(doc)
+                .OfClass(typeof(WallType))
+                .Cast<WallType>()
+                .ToList(); ;
+        }
+
         public static int CalculatePipesCount(ExternalCommandData commandData)
         {
             var uiApp = commandData.Application;
