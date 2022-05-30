@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Assembly>"C:\TestRevitApps\Revit\ApplicationInWpf.dll"</Assembly>
+		<AddInId>EB35065C-7E29-40B3-BFC2-A3339FC500BB</AddInId>
+		<FullClassName>ApplicationInWpf.Main</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<Text>Приложение в Wpf</Text>
+	</AddIn>
+</RevitAddIns>

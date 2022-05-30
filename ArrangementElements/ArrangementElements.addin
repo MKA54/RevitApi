@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+	<AddIn Type="Command">
+		<Assembly>"C:\TestRevitApps\Revit\ArrangementElements.dll"</Assembly>
+		<AddInId>E0C5FCDB-4F8E-4706-A38A-DE9C9F6DB223</AddInId>
+		<FullClassName>ArrangementElements.Main</FullClassName>
+		<VendorId>ADSK</VendorId>
+		<Text>Расстановка элементов</Text>
+	</AddIn>
+</RevitAddIns>
