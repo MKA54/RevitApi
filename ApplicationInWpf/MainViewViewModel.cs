@@ -15,11 +15,11 @@ namespace ApplicationInWpf
     public class MainViewViewModel
     {
         private ExternalCommandData _commandData;
-        public List<DuctType> DuctTypes { get;  set; } = new List<DuctType>();
-        public List<Level> Levels { get;  set; } = new List<Level>();
-        public DelegateCommand SaveCommand { get;  set; }
+        public List<DuctType> DuctTypes { get; set; } = new List<DuctType>();
+        public List<Level> Levels { get; set; } = new List<Level>();
+        public DelegateCommand SaveCommand { get; set; }
         public double Displacement { get; set; }
-        public List<XYZ> Points { get;  set; } = new List<XYZ>();
+        public List<XYZ> Points { get; set; } = new List<XYZ>();
         public DuctType SelectedDuctType { get; set; }
         public Level SelectedLevel { get; set; }
         public event EventHandler CloseRequest;
@@ -45,23 +45,6 @@ namespace ApplicationInWpf
                 return;
             }
 
-            var curves = new List<Curve>();
-
-            for (var i = 0; i < Points.Count; i++)
-            {
-                if (i == 0)
-                {
-                    continue;
-                }
-
-                var prevPoints = Points[i - 1];
-                var currentPoints = Points[i];
-
-                var curve = Line.CreateBound(prevPoints, currentPoints);
-
-                curves.Add(curve);
-            }
-
             var mepSystemType = new FilteredElementCollector(doc)
                 .OfClass(typeof(MEPSystemType))
                 .Cast<MEPSystemType>()
@@ -71,9 +54,20 @@ namespace ApplicationInWpf
             {
                 ts.Start();
 
-                foreach (var curve in curves)
+                for (var i = 1; i < Points.Count; i++)
                 {
-                    Duct.Create(doc, mepSystemType.Id, SelectedDuctType.Id, SelectedLevel.Id, curve.GetEndPoint(0), curve.GetEndPoint(1));
+                    Duct.Create(doc, 
+                        mepSystemType.Id, 
+                        SelectedDuctType.Id, 
+                        SelectedLevel.Id,
+                        new XYZ (
+                            Points[i - 1].X + Displacement, 
+                            Points[i - 1].Y + Displacement, 
+                            Points[i - 1].Z + Displacement),
+                        new XYZ(
+                            Points[i].X + Displacement, 
+                            Points[i].Y + Displacement, 
+                            Points[i].Z + Displacement));
                 }
 
                 ts.Commit();
