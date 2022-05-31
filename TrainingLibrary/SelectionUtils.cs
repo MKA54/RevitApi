@@ -21,7 +21,7 @@ namespace TrainingLibrary
         {
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
-            Autodesk.Revit.DB.Document doc = uidoc.Document;
+            Document doc = uidoc.Document;
             FamilyInstance familyInstance = null;
 
             using (var t = new Transaction(doc, "Create family instance"))
@@ -40,6 +40,20 @@ namespace TrainingLibrary
                 t.Commit();
             }
             return familyInstance;
+        }
+
+        public static List<FamilySymbol> GetFamilySymbols(ExternalCommandData commandData)
+        {
+            var uiapp = commandData.Application;
+            var uidoc = uiapp.ActiveUIDocument;
+            var doc = uidoc.Document;
+
+            var familySymbols = new FilteredElementCollector(doc)
+                .OfClass(typeof(FamilySymbol))
+                .Cast<FamilySymbol>()
+                .ToList();
+
+            return familySymbols;
         }
 
         public static T GetObject<T>(ExternalCommandData commandData, string promptMessage)

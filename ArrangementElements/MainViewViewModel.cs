@@ -46,6 +46,8 @@ namespace ArrangementElements
                 .ToList();
 
             //SelectionUtils.CreateFamilyInstance(_commandData, furniture, Points[0] , SelectedLevel);
+
+            RaiseCloseRequest();
         }
     }
 }

@@ -1,0 +1,19 @@
+﻿<Window x:Class="PlacingElementsBetweenPoints.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PlacingElementsBetweenPoints"
+             mc:Ignorable="d" 
+             Height="250" Width="300">
+    <StackPanel>
+        <Label Content="Выбрать тип семейства" Margin="5" />
+        <ComboBox ItemsSource="{Binding FamilyTypes}"
+                  SelectedValue="{Binding SelectedFamilyType}"
+                  DisplayMemberPath="Name"
+                  Margin="5"/>
+        <Button Content="Применить" Command="{Binding SaveCommand}" Margin="5" />
+        <Label Content="Количество элементов" Margin="5" />
+        <TextBlock Text="{Binding ElementsCount}"></TextBlock>
+    </StackPanel>
+</Window>
