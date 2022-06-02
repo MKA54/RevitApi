@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ApplicationInWpf"
              mc:Ignorable="d" 
-             Height="350" Width="400"
+             Height="300" Width="400"
              Title="Создание воздуховода">
     <StackPanel>
         <Label Content="Выбрать тип воздуховода" Margin="5" />

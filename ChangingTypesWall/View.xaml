@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              Height="300" Width="350">
     <StackPanel>
-        <Label Content="Выбор типа" Margin="5" />
+        <Label Content="Выбор типа стены" Margin="5" />
         <ComboBox ItemsSource="{Binding WallsTypes}"
                   SelectedValue="{Binding SelectedWallType}"
                   DisplayMemberPath="Name"

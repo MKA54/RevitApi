@@ -14,16 +14,6 @@ namespace ApplicationInWpf
 {
     public class MainViewViewModel
     {
-        private ExternalCommandData _commandData;
-        public List<DuctType> DuctTypes { get; set; } = new List<DuctType>();
-        public List<Level> Levels { get; set; } = new List<Level>();
-        public DelegateCommand SaveCommand { get; set; }
-        public double Displacement { get; set; }
-        public List<XYZ> Points { get; set; } = new List<XYZ>();
-        public DuctType SelectedDuctType { get; set; }
-        public Level SelectedLevel { get; set; }
-        public event EventHandler CloseRequest;
-
         public MainViewViewModel(ExternalCommandData commandData)
         {
             _commandData = commandData;
@@ -33,6 +23,16 @@ namespace ApplicationInWpf
             Displacement = 0.0;
             Points = SelectionUtils.GetPoints(commandData, "Выберите точки", ObjectSnapTypes.Endpoints);
         }
+
+        private ExternalCommandData _commandData;
+        public List<DuctType> DuctTypes { get; set; } = new List<DuctType>();
+        public List<Level> Levels { get; set; } = new List<Level>();
+        public DelegateCommand SaveCommand { get; set; }
+        public double Displacement { get; set; }
+        public List<XYZ> Points { get; set; } = new List<XYZ>();
+        public DuctType SelectedDuctType { get; set; }
+        public Level SelectedLevel { get; set; }
+        public event EventHandler CloseRequest;
 
         private void OnSaveCommand()
         {

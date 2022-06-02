@@ -52,12 +52,14 @@ namespace ChangingTypesWall
 
                 foreach (var pickedObject in PickedObjects)
                 {
-                    if (pickedObject is Wall)
+                    if (!(pickedObject is Wall))
                     {
-                        var oWall = pickedObject as Wall;
-
-                        oWall.WallType.Name = SelectedWallType.Name;
+                        continue;
                     }
+
+                    var oWall = pickedObject as Wall;
+
+                    oWall.WallType = SelectedWallType;
                 }
 
                 ts.Commit();
