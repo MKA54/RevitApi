@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrangementElements", "Arra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacingElementsBetweenPoints", "PlacingElementsBetweenPoints\PlacingElementsBetweenPoints.csproj", "{510278B7-E92B-489B-A302-9F66E868BB7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreatingSheets", "CreatingSheets\CreatingSheets.csproj", "{74989022-12E6-4A71-9A62-AE3EEFA61E5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{510278B7-E92B-489B-A302-9F66E868BB7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{510278B7-E92B-489B-A302-9F66E868BB7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{510278B7-E92B-489B-A302-9F66E868BB7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74989022-12E6-4A71-9A62-AE3EEFA61E5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74989022-12E6-4A71-9A62-AE3EEFA61E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74989022-12E6-4A71-9A62-AE3EEFA61E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74989022-12E6-4A71-9A62-AE3EEFA61E5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
