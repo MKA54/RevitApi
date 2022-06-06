@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CreatingSheets"
              mc:Ignorable="d" 
-             Height="320" Width="300">
+             Height="350" Width="300">
     <StackPanel>
         <Label Content="Список типов семейств" Margin="5" />
         <ComboBox ItemsSource="{Binding SheetTypes}"
@@ -17,10 +17,11 @@
                   SelectedValue="{Binding SelectedViewPlan}"
                   DisplayMemberPath="Name"
                   Margin="5"/>
+        <Label Content="Разработано" Margin="5" />
+        <TextBox Text="{Binding Developed}" Margin="5" />
         <Label Content="Количество листов" Margin="5" />
         <TextBox Text="{Binding SheetsCount}" Margin="5" />
-        
 
-        <Button Content="Применить" Command="{Binding SaveCommand}" Margin="5" />
+        <Button Content="Создать листы" Command="{Binding SaveCommand}" Margin="5" />
     </StackPanel>
 </Window>

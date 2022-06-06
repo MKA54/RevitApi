@@ -31,7 +31,7 @@ namespace CreatingSheets
 
         private void OnSaveCommand()
         {
-            if (SelectedSheetType == null || SelectedViewPlan == null)
+            if (SelectedSheetType == null || SelectedViewPlan == null || Developed == null)
             {
                 return;
             }
@@ -40,15 +40,22 @@ namespace CreatingSheets
             var uiDoc = uiApp.ActiveUIDocument;
             var doc = uiDoc.Document;
 
-            var count = int.Parse(SheetsCount);
+            var sheetsCount = int.Parse(SheetsCount);
 
             using (var tr = new Transaction(doc, "Create a new ViewSheet"))
             {
                 tr.Start();
 
-                for (var i = 0; i < count; i++)
+                
+                for (var i = 0; i < sheetsCount; i++)
                 {
                     var sheet = ViewSheet.Create(doc, SelectedSheetType.Id);
+
+                    Viewport.Create(doc, sheet.Id, SelectedViewPlan.Duplicate(ViewDuplicateOption.WithDetailing),
+                        XYZ.Zero);
+
+                    var parameter = sheet.LookupParameter("Разработал");
+                    parameter.Set(Developed);
                 }
 
                 tr.Commit();
@@ -69,7 +76,7 @@ namespace CreatingSheets
             var doc = uiDoc.Document;
 
             return new FilteredElementCollector(doc)
-                    .WhereElementIsElementType()
+                    .OfClass(typeof(FamilySymbol))
                     .OfCategory(BuiltInCategory.OST_TitleBlocks)
                     .Cast<FamilySymbol>()
                     .ToList();
