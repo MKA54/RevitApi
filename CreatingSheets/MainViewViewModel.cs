@@ -46,7 +46,6 @@ namespace CreatingSheets
             {
                 tr.Start();
 
-                
                 for (var i = 0; i < sheetsCount; i++)
                 {
                     var sheet = ViewSheet.Create(doc, SelectedSheetType.Id);
