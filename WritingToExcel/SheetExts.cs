@@ -1,4 +1,5 @@
-﻿using NPOI.SS.UserModel;
+﻿using System;
+using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 
 namespace WritingToExcel
@@ -10,21 +11,15 @@ namespace WritingToExcel
             var cellReference = new CellReference(rowIndex, columnIndex);
 
             var row = sheet.GetRow(cellReference.Row);
-            if (row == null)
-            {
-                row = sheet.CreateRow(cellReference.Row);
-            }
+            row = row ?? sheet.CreateRow(cellReference.Row);
 
             var cell = row.GetCell(cellReference.Col);
-            if (cell == null)
-            {
-                cell = row.CreateCell(cellReference.Col);
-            }
+            cell = cell ?? row.CreateCell(cellReference.Col);
 
             if (value is string)
             {
                 cell.SetCellValue((string)(object)value);
-            } 
+            }
             else if (value is double)
             {
                 cell.SetCellValue((double)(object)value);

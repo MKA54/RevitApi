@@ -25,7 +25,7 @@ namespace WritingToExcel
                 .ToList();
 
             var excelPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), 
-                "ducts.excel");
+                "ducts.xlsx");
 
             using (var stream = new FileStream(excelPath, FileMode.Create, FileAccess.Write))
             {
