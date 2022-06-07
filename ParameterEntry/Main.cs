@@ -1,16 +1,8 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using Autodesk.Revit.DB.Plumbing;
 using Autodesk.Revit.UI.Selection;
-using Autodesk.Revit.ApplicationServices;
 
 namespace ParameterEntry
 {

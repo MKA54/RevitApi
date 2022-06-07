@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Mechanical;
 using Autodesk.Revit.DB.Plumbing;
@@ -19,10 +17,10 @@ namespace TrainingLibrary
             XYZ insertionPoint,
             Level oLevel)
         {
-            UIApplication uiapp = commandData.Application;
-            UIDocument uidoc = uiapp.ActiveUIDocument;
-            Document doc = uidoc.Document;
-            FamilyInstance familyInstance = null;
+            var uiapp = commandData.Application;
+            var uidoc = uiapp.ActiveUIDocument;
+            var doc = uidoc.Document;
+            FamilyInstance familyInstance;
 
             using (var t = new Transaction(doc, "Create family instance"))
             {
@@ -61,9 +59,9 @@ namespace TrainingLibrary
             var uiapp = commandData.Application;
             var uidoc = uiapp.ActiveUIDocument;
             var doc = uidoc.Document;
-            Reference selectedObj = null;
             T elem;
 
+            Reference selectedObj;
             try
             {
                 selectedObj = uidoc.Selection.PickObject(ObjectType.Element, promptMessage);
@@ -88,13 +86,12 @@ namespace TrainingLibrary
 
             while (true)
             {
-                XYZ pickedPoint = null;
-
+                XYZ pickedPoint;
                 try
                 {
                     pickedPoint = uiDoc.Selection.PickPoint(objectSnapTypes, promptMessage);
                 }
-                catch (Autodesk.Revit.Exceptions.OperationCanceledException e)
+                catch (OperationCanceledException)
                 {
                    break;
                 }
@@ -155,7 +152,7 @@ namespace TrainingLibrary
             return new FilteredElementCollector(doc)
                 .OfClass(typeof(WallType))
                 .Cast<WallType>()
-                .ToList(); ;
+                .ToList(); 
         }
 
         public static int CalculatePipesCount(ExternalCommandData commandData)

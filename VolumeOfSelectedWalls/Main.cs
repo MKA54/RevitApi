@@ -1,13 +1,8 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using Autodesk.Revit.UI.Selection;
 
 namespace VolumeOfSelectedWalls
@@ -21,7 +16,7 @@ namespace VolumeOfSelectedWalls
             var uiDoc = uiApplication.ActiveUIDocument;
             var doc = uiDoc.Document;
 
-            IList<Reference> selectedElementsRefList = uiDoc.Selection.PickObjects(ObjectType.Element, "Выберите элементы");
+            var selectedElementsRefList = uiDoc.Selection.PickObjects(ObjectType.Element, "Выберите элементы");
 
             var volumeOfSelectedWalls = 0.0;
 

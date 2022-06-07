@@ -2,10 +2,6 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExportToImage
 {
@@ -22,13 +18,14 @@ namespace ExportToImage
             {
                 ts.Start();
 
-                var img = new ImageExportOptions();
+                var img = new ImageExportOptions
+                {
+                    ExportRange = ExportRange.CurrentView,
+                    HLRandWFViewsFileType = ImageFileType.PNG
+                };
 
-                img.ExportRange = ExportRange.CurrentView;
-                img.HLRandWFViewsFileType = ImageFileType.PNG;
-
-                var DEsktoppath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                img.FilePath = DEsktoppath + @"\" + doc.ActiveView.Name;
+                var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                img.FilePath = desktopPath + @"\" + doc.ActiveView.Name;
                 img.ShadowViewsFileType = ImageFileType.PNG;
 
                 doc.ExportImage(img);

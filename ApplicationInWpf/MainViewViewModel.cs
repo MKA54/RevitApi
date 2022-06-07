@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.Mechanical;
 using Autodesk.Revit.UI;
@@ -25,11 +23,11 @@ namespace ApplicationInWpf
         }
 
         private ExternalCommandData _commandData;
-        public List<DuctType> DuctTypes { get; set; } = new List<DuctType>();
-        public List<Level> Levels { get; set; } = new List<Level>();
+        public List<DuctType> DuctTypes { get; set; }
+        public List<Level> Levels { get; set; }
         public DelegateCommand SaveCommand { get; set; }
         public double Displacement { get; set; }
-        public List<XYZ> Points { get; set; } = new List<XYZ>();
+        public List<XYZ> Points { get; set; }
         public DuctType SelectedDuctType { get; set; }
         public Level SelectedLevel { get; set; }
         public event EventHandler CloseRequest;

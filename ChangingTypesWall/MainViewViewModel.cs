@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Prism.Commands;
@@ -25,7 +21,7 @@ namespace ChangingTypesWall
 
         public DelegateCommand SaveCommand { get; }
         public List<Element> PickedObjects { get; }
-        public List<WallType> WallsTypes { get; } = new List<WallType>();
+        public List<WallType> WallsTypes { get; }
         public WallType SelectedWallType { get; set; }
 
         public event EventHandler CloseRequest;

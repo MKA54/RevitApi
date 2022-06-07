@@ -21,7 +21,7 @@ namespace AirDuctsCountPerFloor
                 .OfType<Duct>()
                 .ToList();
 
-            var levelsArray = new string[] {
+            var levelsArray = new [] {
                 "1 этаж: ",
                 "2 этаж: "
             };
@@ -29,9 +29,9 @@ namespace AirDuctsCountPerFloor
             var groundFloorQuanity = 0;
             var secondOnFloorQuanity = 0;
 
-            for (var i = 0; i < familyInstances.Count; i++)
+            foreach (var duct in familyInstances)
             {
-                if (familyInstances[i].ReferenceLevel.Name.Contains("1"))
+                if (duct.ReferenceLevel.Name.Contains("1"))
                 {
                     groundFloorQuanity++;
                     continue;

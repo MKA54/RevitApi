@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
@@ -15,7 +12,7 @@ namespace PlacingElementsBetweenPoints
     public class MainViewViewModel
     {
         private ExternalCommandData _commandData;
-        public List<XYZ> Points { get; set; } = new List<XYZ>();
+        public List<XYZ> Points { get; set; }
         public List<FamilySymbol> FamilyTypes { get; private set; }
         public FamilySymbol SelectedFamilyType { get; set; }
         public DelegateCommand SaveCommand { get; }
@@ -52,6 +49,8 @@ namespace PlacingElementsBetweenPoints
 
                 ts.Commit();
             }
+
+            RaiseCloseRequest();
         }
 
         private void RaiseCloseRequest()
