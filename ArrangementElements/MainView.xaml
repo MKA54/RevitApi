@@ -5,8 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ArrangementElements"
              mc:Ignorable="d" 
-             Height="200" Width="300">
+             Height="230" Width="300">
     <StackPanel>
+        <Label Content="Выбрать элемент" Margin="5" />
+        <ComboBox ItemsSource="{Binding Elements}"
+                  SelectedValue="{Binding SelectedElement}"
+                  DisplayMemberPath="Name"
+                  Margin="5"/>
         <Label Content="Выбрать уровень" Margin="5" />
         <ComboBox ItemsSource="{Binding Levels}"
                   SelectedValue="{Binding SelectedLevel}"

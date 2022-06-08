@@ -12,7 +12,7 @@ namespace PlacingElementsBetweenPoints
         {
             InitializeComponent();
             var vm = new MainViewViewModel(commandData);
-            vm.CloseRequest += (s, e) => this.Close();
+            vm.CloseRequest += (s, e) => Close();
             DataContext = vm;
         }
     }

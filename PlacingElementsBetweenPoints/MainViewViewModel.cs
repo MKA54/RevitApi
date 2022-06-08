@@ -23,7 +23,7 @@ namespace PlacingElementsBetweenPoints
         public MainViewViewModel(ExternalCommandData commandData)
         {
             _commandData = commandData;
-            Points = SelectionUtils.GetPoints(commandData, "Выберите точки", ObjectSnapTypes.Endpoints);
+            Points = SelectionUtils.GetPoints(commandData, "Выберите точки");
             FamilyTypes = SelectionUtils.GetFamilySymbols(commandData);
             SaveCommand = new DelegateCommand(OnSaveCommand);
         }
@@ -38,7 +38,7 @@ namespace PlacingElementsBetweenPoints
                                      + (Points[0].Y - Points[1].Y) * (Points[0].Y - Points[1].Y)
                                      + (Points[0].Z - Points[1].Z) * (Points[0].Z - Points[1].Z));
 
-            using (var ts = new Transaction(doc, "Create duct"))
+            using (var ts = new Transaction(doc, "Placing elements"))
             {
                 ts.Start();
 

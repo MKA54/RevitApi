@@ -11,35 +11,6 @@ namespace TrainingLibrary
 {
     public class SelectionUtils
     {
-        public static FamilyInstance CreateFamilyInstance(
-            ExternalCommandData commandData,
-            FamilySymbol oFamSymb,
-            XYZ insertionPoint,
-            Level oLevel)
-        {
-            var uiapp = commandData.Application;
-            var uidoc = uiapp.ActiveUIDocument;
-            var doc = uidoc.Document;
-            FamilyInstance familyInstance;
-
-            using (var t = new Transaction(doc, "Create family instance"))
-            {
-                t.Start();
-                if (!oFamSymb.IsActive)
-                {
-                    oFamSymb.Activate();
-                    doc.Regenerate();
-                }
-                familyInstance = doc.Create.NewFamilyInstance(
-                    insertionPoint,
-                    oFamSymb,
-                    oLevel,
-                    Autodesk.Revit.DB.Structure.StructuralType.NonStructural);
-                t.Commit();
-            }
-            return familyInstance;
-        }
-
         public static List<FamilySymbol> GetFamilySymbols(ExternalCommandData commandData)
         {
             var uiapp = commandData.Application;
@@ -52,28 +23,6 @@ namespace TrainingLibrary
                 .ToList();
 
             return familySymbols;
-        }
-
-        public static T GetObject<T>(ExternalCommandData commandData, string promptMessage)
-        {
-            var uiapp = commandData.Application;
-            var uidoc = uiapp.ActiveUIDocument;
-            var doc = uidoc.Document;
-            T elem;
-
-            Reference selectedObj;
-            try
-            {
-                selectedObj = uidoc.Selection.PickObject(ObjectType.Element, promptMessage);
-            }
-            catch (Exception)
-            {
-                return default(T);
-            }
-
-            elem = (T)(object)doc.GetElement(selectedObj.ElementId);
-
-            return elem;
         }
 
         public static List<XYZ> GetPoints(ExternalCommandData commandData, string promptMessage, 
@@ -94,6 +43,31 @@ namespace TrainingLibrary
                 catch (OperationCanceledException)
                 {
                    break;
+                }
+
+                points.Add(pickedPoint);
+            }
+
+            return points;
+        }
+
+        public static List<XYZ> GetPoints(ExternalCommandData commandData, string promptMessage)
+        {
+            var uiApp = commandData.Application;
+            var uiDoc = uiApp.ActiveUIDocument;
+
+            var points = new List<XYZ>();
+
+            while (true)
+            {
+                XYZ pickedPoint;
+                try
+                {
+                    pickedPoint = uiDoc.Selection.PickPoint(promptMessage);
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
                 }
 
                 points.Add(pickedPoint);
