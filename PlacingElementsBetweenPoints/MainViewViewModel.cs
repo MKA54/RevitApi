@@ -23,7 +23,7 @@ namespace PlacingElementsBetweenPoints
         public MainViewViewModel(ExternalCommandData commandData)
         {
             _commandData = commandData;
-            Points = SelectionUtils.GetPoints(commandData, "Выберите точки");
+            Points = GetPoints();
             FamilyTypes = SelectionUtils.GetFamilySymbols(commandData);
             SaveCommand = new DelegateCommand(OnSaveCommand);
         }
@@ -42,8 +42,8 @@ namespace PlacingElementsBetweenPoints
             {
                 ts.Start();
 
-                var length = SelectedFamilyType.Id.IntegerValue;
-                var count = distance % length;
+                var length = SelectedFamilyType.;
+                var count = (int) distance / length;
 
                 ElementsCount = count.ToString(CultureInfo.InvariantCulture);
 
@@ -51,6 +51,26 @@ namespace PlacingElementsBetweenPoints
             }
 
             RaiseCloseRequest();
+        }
+
+        private List<XYZ> GetPoints()
+        {
+            var uiApp = _commandData.Application;
+            var uiDoc = uiApp.ActiveUIDocument;
+
+            var points = new List<XYZ>();
+
+            var i = 0;
+            while (i != 2)
+            {
+                var pickedPoint = uiDoc.Selection.PickPoint(ObjectSnapTypes.Endpoints, "Выберите 2 точки");
+
+                points.Add(pickedPoint);
+
+                i++;
+            }
+
+            return points;
         }
 
         private void RaiseCloseRequest()

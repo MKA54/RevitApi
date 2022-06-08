@@ -50,32 +50,6 @@ namespace TrainingLibrary
 
             return points;
         }
-
-        public static List<XYZ> GetPoints(ExternalCommandData commandData, string promptMessage)
-        {
-            var uiApp = commandData.Application;
-            var uiDoc = uiApp.ActiveUIDocument;
-
-            var points = new List<XYZ>();
-
-            while (true)
-            {
-                XYZ pickedPoint;
-                try
-                {
-                    pickedPoint = uiDoc.Selection.PickPoint(promptMessage);
-                }
-                catch (OperationCanceledException)
-                {
-                    break;
-                }
-
-                points.Add(pickedPoint);
-            }
-
-            return points;
-        }
-
         public static List<DuctType> GetDuctTypes(ExternalCommandData commandData)
         {
             var uiApp = commandData.Application;

@@ -5,6 +5,6 @@
 		<AddInId>E0C5FCDB-4F8E-4706-A38A-DE9C9F6DB223</AddInId>
 		<FullClassName>ArrangementElements.Main</FullClassName>
 		<VendorId>ADSK</VendorId>
-		<Text>Расстановка элементов</Text>
+		<Text>Расстановка элементов мебели</Text>
 	</AddIn>
 </RevitAddIns>
