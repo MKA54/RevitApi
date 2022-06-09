@@ -24,15 +24,15 @@ namespace TotalLengthPipes
 
             var totalLength = 0.0;
 
-            foreach (var element in familyInstances)
+            familyInstances.ForEach(pipe =>
             {
-                var lengthParameter = element.get_Parameter(BuiltInParameter.CURVE_ELEM_LENGTH);
+                var lengthParameter = pipe.get_Parameter(BuiltInParameter.CURVE_ELEM_LENGTH);
 
                 if (lengthParameter.StorageType == StorageType.Double)
                 {
                     totalLength += lengthParameter.AsDouble();
                 }
-            }
+            });
 
             var result = UnitUtils.ConvertFromInternalUnits(totalLength, UnitTypeId.Meters);
 

@@ -145,15 +145,15 @@ namespace TrainingLibrary
 
             var volumeOfSelectedWalls = 0.0;
 
-            foreach (var wall in walls)
+            walls.ForEach(w =>
             {
-                var volumeParameter = wall.get_Parameter(BuiltInParameter.HOST_VOLUME_COMPUTED);
+                var volumeParameter = w.get_Parameter(BuiltInParameter.HOST_VOLUME_COMPUTED);
 
                 if (volumeParameter.StorageType == StorageType.Double)
                 {
                     volumeOfSelectedWalls += volumeParameter.AsDouble();
                 }
-            }
+            });
 
             return volumeOfSelectedWalls;
         }

@@ -54,7 +54,6 @@ namespace ChangingTypesWall
                     }
 
                     var oWall = pickedObject as Wall;
-
                     oWall.WallType = SelectedWallType;
                 }
 

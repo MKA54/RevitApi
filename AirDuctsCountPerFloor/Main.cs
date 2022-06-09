@@ -40,8 +40,8 @@ namespace AirDuctsCountPerFloor
                 secondOnFloorQuanity++;
             }
 
-            levelsArray[0] = levelsArray[0] + groundFloorQuanity;
-            levelsArray[1] = levelsArray[1] + secondOnFloorQuanity;
+            levelsArray[0] += groundFloorQuanity;
+            levelsArray[1] += secondOnFloorQuanity;
 
             TaskDialog.Show("Ducts count", string.Join(", ", levelsArray));
 

@@ -42,8 +42,9 @@ namespace PlacingElementsBetweenPoints
             {
                 ts.Start();
 
-                var length = SelectedFamilyType.;
-                var count = (int) distance / length;
+                var lengthParameter = SelectedFamilyType.get_Parameter(BuiltInParameter.CURVE_ELEM_LENGTH).AsDouble();
+                var length = UnitUtils.ConvertFromInternalUnits(lengthParameter, UnitTypeId.Meters);
+                var count = (int)distance / length;
 
                 ElementsCount = count.ToString(CultureInfo.InvariantCulture);
 
