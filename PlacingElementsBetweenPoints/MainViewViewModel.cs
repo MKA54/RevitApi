@@ -24,7 +24,7 @@ namespace PlacingElementsBetweenPoints
         {
             _commandData = commandData;
             Points = GetPoints();
-            FamilyTypes = SelectionUtils.GetFamilySymbols(commandData);
+            FamilyTypes = SelectionUtils.GetFamilySymbol(_commandData);
             SaveCommand = new DelegateCommand(OnSaveCommand);
         }
 
@@ -34,15 +34,13 @@ namespace PlacingElementsBetweenPoints
             var uiDoc = uiApp.ActiveUIDocument;
             var doc = uiDoc.Document;
 
-            var distance = Math.Sqrt((Points[0].X - Points[1].X) * (Points[0].X - Points[1].X)
-                                     + (Points[0].Y - Points[1].Y) * (Points[0].Y - Points[1].Y)
-                                     + (Points[0].Z - Points[1].Z) * (Points[0].Z - Points[1].Z));
+            var distance = Points[0].DistanceTo(Points[1]);
 
             using (var ts = new Transaction(doc, "Placing elements"))
             {
                 ts.Start();
 
-                var lengthParameter = SelectedFamilyType.get_Parameter(BuiltInParameter.CURVE_ELEM_LENGTH).AsDouble();
+                var lengthParameter = SelectedFamilyType.;
                 var length = UnitUtils.ConvertFromInternalUnits(lengthParameter, UnitTypeId.Meters);
                 var count = (int)distance / length;
 
@@ -51,7 +49,7 @@ namespace PlacingElementsBetweenPoints
                 ts.Commit();
             }
 
-            RaiseCloseRequest();
+            //RaiseCloseRequest();
         }
 
         private List<XYZ> GetPoints()
