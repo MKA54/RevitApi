@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
@@ -9,16 +10,27 @@ using TrainingLibrary;
 
 namespace PlacingElementsBetweenPoints
 {
-    public class MainViewViewModel
+    public class MainViewViewModel : INotifyPropertyChanged
     {
         private ExternalCommandData _commandData;
+        private string _elementsCount;
         public List<XYZ> Points { get; set; }
         public List<FamilySymbol> FamilyTypes { get; private set; }
         public FamilySymbol SelectedFamilyType { get; set; }
         public DelegateCommand SaveCommand { get; }
         public event EventHandler CloseRequest;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public string ElementsCount { get; set; }
+        public string ElementsCount
+        {
+            get => _elementsCount;
+
+            set
+            {
+                _elementsCount = value;
+                OnPropertyChanged();
+            }
+        }
 
         public MainViewViewModel(ExternalCommandData commandData)
         {
@@ -40,11 +52,12 @@ namespace PlacingElementsBetweenPoints
             {
                 ts.Start();
 
-                var lengthParameter = SelectedFamilyType.;
-                var length = UnitUtils.ConvertFromInternalUnits(lengthParameter, UnitTypeId.Meters);
-                var count = (int)distance / length;
+                //var lengthParameter = SelectedFamilyType.Id;
+                //var length = UnitUtils.ConvertFromInternalUnits(lengthParameter, UnitTypeId.Meters);
+                //var count = (int)distance / length;
 
-                ElementsCount = count.ToString(CultureInfo.InvariantCulture);
+                //ElementsCount = count.ToString(CultureInfo.InvariantCulture);
+                ElementsCount = "gggg";
 
                 ts.Commit();
             }
@@ -70,6 +83,11 @@ namespace PlacingElementsBetweenPoints
             }
 
             return points;
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void RaiseCloseRequest()
