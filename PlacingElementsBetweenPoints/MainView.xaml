@@ -11,7 +11,7 @@
                   SelectedValue="{Binding SelectedFamilyType}"
                   DisplayMemberPath="Name"
                   Margin="5"/>
-        <Button Content="Применить" Command="{Binding SaveCommand}" Margin="5" />
+        <Button Content="Рассчитать количество элементов" Command="{Binding SaveCommand}" Margin="5" />
         <Label Content="Количество элементов" Margin="5" />
         <TextBlock Text="{Binding ElementsCount}" Margin="5" />
     </StackPanel>

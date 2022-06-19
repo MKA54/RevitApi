@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
@@ -12,7 +14,7 @@ namespace PlacingElementsBetweenPoints
 {
     public class MainViewViewModel : INotifyPropertyChanged
     {
-        private ExternalCommandData _commandData;
+        private readonly ExternalCommandData _commandData;
         private string _elementsCount;
         public List<XYZ> Points { get; set; }
         public List<FamilySymbol> FamilyTypes { get; private set; }
@@ -52,12 +54,11 @@ namespace PlacingElementsBetweenPoints
             {
                 ts.Start();
 
-                //var lengthParameter = SelectedFamilyType.Id;
-                //var length = UnitUtils.ConvertFromInternalUnits(lengthParameter, UnitTypeId.Meters);
-                //var count = (int)distance / length;
+                var lengthParameter = SelectedFamilyType.Parameters;
+                var length = UnitUtils.ConvertFromInternalUnits(lengthParameter, UnitTypeId.Meters);
+                var count = (int)distance / length;
 
                 //ElementsCount = count.ToString(CultureInfo.InvariantCulture);
-                ElementsCount = "gggg";
 
                 ts.Commit();
             }
