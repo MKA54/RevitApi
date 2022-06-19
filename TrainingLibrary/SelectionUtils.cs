@@ -11,16 +11,16 @@ namespace TrainingLibrary
 {
     public class SelectionUtils
     {
-        public static List<FamilySymbol> GetFamilyTypes(ExternalCommandData commandData)
+        public static List<FamilyInstance> GetFamilyTypes(ExternalCommandData commandData)
         {
             var uiapp = commandData.Application;
             var uidoc = uiapp.ActiveUIDocument;
             var doc = uidoc.Document;
 
             var familySymbols = new FilteredElementCollector(doc)
-                .OfClass(typeof(FamilySymbol))
-                .WhereElementIsElementType()
-                .Cast<FamilySymbol>()
+                .OfClass(typeof(FamilyInstance))
+                .ToElements()
+                .Cast<FamilyInstance>()
                 .ToList();
 
             return familySymbols;
