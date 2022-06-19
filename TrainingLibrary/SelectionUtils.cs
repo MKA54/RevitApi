@@ -11,7 +11,7 @@ namespace TrainingLibrary
 {
     public class SelectionUtils
     {
-        public static List<FamilySymbol> GetFamilySymbol(ExternalCommandData commandData)
+        public static List<FamilySymbol> GetFamilyTypes(ExternalCommandData commandData)
         {
             var uiapp = commandData.Application;
             var uidoc = uiapp.ActiveUIDocument;

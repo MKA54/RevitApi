@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using Prism.Commands;
 using TrainingLibrary;
 
 namespace PlacingElementsBetweenPoints
@@ -17,9 +15,7 @@ namespace PlacingElementsBetweenPoints
         private readonly ExternalCommandData _commandData;
         private string _elementsCount;
         public List<XYZ> Points { get; set; }
-        public List<FamilySymbol> FamilyTypes { get; private set; }
-        public FamilySymbol SelectedFamilyType { get; set; }
-        public DelegateCommand SaveCommand { get; }
+        public List<FamilySymbol> FamilyTypes { get; set; }
         public event EventHandler CloseRequest;
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -38,11 +34,11 @@ namespace PlacingElementsBetweenPoints
         {
             _commandData = commandData;
             Points = GetPoints();
-            FamilyTypes = SelectionUtils.GetFamilySymbol(_commandData);
-            SaveCommand = new DelegateCommand(OnSaveCommand);
+            FamilyTypes = SelectionUtils.GetFamilyTypes(_commandData);
+            OutputData();
         }
 
-        private void OnSaveCommand()
+        private void OutputData()
         {
             var uiApp = _commandData.Application;
             var uiDoc = uiApp.ActiveUIDocument;
@@ -53,12 +49,14 @@ namespace PlacingElementsBetweenPoints
             using (var ts = new Transaction(doc, "Placing elements"))
             {
                 ts.Start();
+                foreach (var e in FamilyTypes)
+                {
+                    var lengthParameter = e.get_Parameter(BuiltInParameter.CURVE_ELEM_LENGTH).AsDouble();
+                    var length = UnitUtils.ConvertFromInternalUnits(lengthParameter, UnitTypeId.Meters);
+                    var count = (int)distance / length;
 
-                var lengthParameter = SelectedFamilyType.Parameters;
-                var length = UnitUtils.ConvertFromInternalUnits(lengthParameter, UnitTypeId.Meters);
-                var count = (int)distance / length;
-
-                //ElementsCount = count.ToString(CultureInfo.InvariantCulture);
+                    ElementsCount += e.Name + ": " + count.ToString(CultureInfo.InvariantCulture) + "/n";
+                }
 
                 ts.Commit();
             }
